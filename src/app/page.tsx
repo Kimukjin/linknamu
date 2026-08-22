@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import ProfileHeader from "@/components/ProfileHeader";
 import LinkCard from "@/components/LinkCard";
 
@@ -14,6 +17,15 @@ const links = [
 ];
 
 export default function Home() {
+  const [clickCounts, setClickCounts] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    fetch("/api/links/clicks")
+      .then((res) => res.json())
+      .then((data: Record<string, number>) => setClickCounts(data))
+      .catch(() => {});
+  }, []);
+
   return (
     <main className="flex min-h-screen flex-col items-center bg-zinc-50 px-4 py-16 dark:bg-black">
       <div className="flex w-full max-w-md flex-col items-center gap-8">
@@ -29,6 +41,7 @@ export default function Home() {
               id={link.id}
               label={link.label}
               url={link.url}
+              clickCount={clickCounts[link.id] ?? 0}
             />
           ))}
         </div>
