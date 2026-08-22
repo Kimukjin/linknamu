@@ -2,9 +2,9 @@ import ProfileHeader from "@/components/ProfileHeader";
 import LinkCard from "@/components/LinkCard";
 
 const profile = {
-  name: "김클로",
-  bio: "프론트엔드 개발자입니다.",
-  imageUrl: "",
+  name: "김개발",
+  bio: "풀스택 개발자 : 요즘에는 AI",
+  imageUrl: "https://placehold.co/150x150/orange/white",
 };
 
 const links = [
